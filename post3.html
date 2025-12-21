@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Black and white </title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Black and white</h1>
+    <p class="date">December 20, 2025</p>
+  </header>
+
+  <main>
+
+    <p>
+      Photos made during various trip through Poland 
+    </p>
+
+    <!-- Image 1 -->
+    <!-- <div class="gallery"></div>
+     <img src="images/photo1.JPG">
+     <img src="images/photo2.JPG">
+    </div> -->
+    <div class="gallery" id="gallery"></div>
+
+
+
+
+        <script>
+        const gallery = document.getElementById("gallery");
+
+        // which images need rotation
+        const rotations = {
+            
+
+            //12: 270
+        };
+
+        const TOTAL_IMAGES = 40;
+
+        for (let i = 1; i <= TOTAL_IMAGES; i++) {
+            const img = new Image();
+            const filename = `images/black-white404800${String(i).padStart(2, '0')}.JPG`;
+            img.src = filename;
+
+            img.onload = () => {
+            const box = document.createElement("div");
+            box.className = "image-box";
+
+            // apply rotation if needed
+            if (rotations[i]) {
+                img.style.transform = `rotate(${rotations[i]}deg)`;
+            }
+
+            box.appendChild(img);
+            gallery.appendChild(box);
+            };
+
+            // 🔑 skip missing / broken images
+            img.onerror = () => {
+            // do nothing → image is skipped
+            };
+        }
+        </script>
+
+
+
+
+
+    <p>
+      <a href="index.html">← Back to Home</a>
+    </p>
+
+  </main>
+
+</body>
+</html>
